@@ -1,14 +1,21 @@
 <div class="container mt-5">
   <button pButton label="Add Book" (click)="addBook()" icon="pi pi-plus"></button>
   <div>
-    <p-dialog header="Godfather I" [(visible)]="display" [modal]="true" [responsive]="true"
+    <p-dialog header="Add Book Page" [(visible)]="display" [modal]="true" [responsive]="true"
       [style]="{width: '350px', minWidth: '200px'}" [minY]="70" [maximizable]="true" [baseZIndex]="10000">
+      <div class="container " style="text-align: center">
+        <input name="bname" [(ngModel)]="bookName" type="text" size="30" pInputText placeholder="Book Name"><br /><br />
+        <input name="aname" [(ngModel)]="authorName" type="text" size="30" pInputText placeholder="Author Name">
 
+      </div>
       <p-footer>
-        <button type="button" pButton icon="pi pi-plus" (click)="display=false" label="Add Book"></button>
-        <button type="button" pButton icon="pi pi-times" (click)="display=false" label="Cancel"
-          class="ui-button-secondary"></button>
+        <div align="center">
+          <button type="button" pButton icon="pi pi-plus" (click)="display=false" label="Add Book"></button>
+          <button type="button" pButton icon="pi pi-times" (click)="display=false" label="Cancel"
+            class="ui-button-secondary"></button>
+        </div>
       </p-footer>
+
     </p-dialog>
 
   </div>

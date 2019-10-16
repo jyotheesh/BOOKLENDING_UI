@@ -18,6 +18,7 @@ export class LoginComponent implements OnInit {
     this._service.getLoginUser(this.email, this.password).subscribe((data) => {
       console.log(data);
       if (data['statusCode'] == 200) {
+        sessionStorage.setItem("key", data['userId']);
         this._route.navigate(['home'])
       }
       else {

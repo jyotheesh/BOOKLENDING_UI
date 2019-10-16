@@ -18,7 +18,15 @@ export class DataService {
       "password": password
     }
     return this._http.post("http://10.117.189.162:9090/book-lending-system/login", userObj)
+  }
 
+  postBookToApi = (bookName, authorName, userId) => {
+    let book = {
+      "bookName": bookName,
+      "authorName": authorName,
+      "userId": userId
+    }
+    return this._http.post("", book)
   }
 
 
