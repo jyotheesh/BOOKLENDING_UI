@@ -1,0 +1,16 @@
+<div class="container mt-5">
+  <button pButton label="Add Book" (click)="addBook()" icon="pi pi-plus"></button>
+  <div>
+    <p-dialog header="Godfather I" [(visible)]="display" [modal]="true" [responsive]="true"
+      [style]="{width: '350px', minWidth: '200px'}" [minY]="70" [maximizable]="true" [baseZIndex]="10000">
+
+      <p-footer>
+        <button type="button" pButton icon="pi pi-plus" (click)="display=false" label="Add Book"></button>
+        <button type="button" pButton icon="pi pi-times" (click)="display=false" label="Cancel"
+          class="ui-button-secondary"></button>
+      </p-footer>
+    </p-dialog>
+
+  </div>
+
+</div>
