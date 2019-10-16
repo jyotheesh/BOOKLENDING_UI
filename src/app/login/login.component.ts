@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit {
         this._route.navigate(['home'])
       }
       else {
-        alert("Invalid UserName or Password")
+        alert(data['message']);
       }
     })
   }

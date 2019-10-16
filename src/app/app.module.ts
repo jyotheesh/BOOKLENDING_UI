@@ -18,6 +18,8 @@ import { CardModule } from 'primeng/card';
 import { InputTextModule } from 'primeng/inputtext';
 import { HomeComponent } from './home/home.component';
 import { DialogModule } from 'primeng/dialog';
+import { TableModule } from 'primeng/table';
+import { ToastModule } from 'primeng/toast';
 
 
 @NgModule({
@@ -40,7 +42,9 @@ import { DialogModule } from 'primeng/dialog';
     CardModule,
     InputTextModule,
     RouterModule,
-    DialogModule
+    DialogModule,
+    TableModule,
+    ToastModule
   ],
   providers: [],
   bootstrap: [AppComponent]
