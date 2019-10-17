@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { doesNotThrow } from 'assert';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -14,13 +15,19 @@ export class DataService {
 
   constructor(private _http: HttpClient) { }
 
+  loginStatus: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(true);
+
+  updateLoginStatus = (status: boolean) => {
+    this.loginStatus.next(status)
+  }
+
+
+
   /**
    *postRegister method to save user data to backend
    */
   postRegister = (user) => {
-
     return this._http.post("http://13.233.128.233:9090/book-lending-system/users/", user);
-
   }
 
 
@@ -32,9 +39,7 @@ export class DataService {
       "email": email,
       "password": password
     }
-
     return this._http.post("http://13.233.128.233:9090/book-lending-system/login", userObj)
-
   }
 
   /**
@@ -46,9 +51,7 @@ export class DataService {
       "authorName": authorName,
       "userId": userId
     }
-
     return this._http.post("http://13.233.128.233:9090/book-lending-system/books/", book)
-
   }
 
   /**
@@ -56,9 +59,7 @@ export class DataService {
    * @param: pageNo
    */
   getAllBooks = (pageNo: number) => {
-
     return this._http.get<Array<object>>("http://13.233.128.233:9090/book-lending-system/books/?pageNumber=" + pageNo);
-
   }
 
   /**

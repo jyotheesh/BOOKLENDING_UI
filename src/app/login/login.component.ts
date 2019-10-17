@@ -19,6 +19,7 @@ export class LoginComponent implements OnInit {
       console.log(data);
       if (data['statusCode'] == 200) {
         sessionStorage.setItem("key", data['userId']);
+        this._service.updateLoginStatus(false);
         this._route.navigate(['home'])
       }
       else {

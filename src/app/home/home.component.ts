@@ -109,6 +109,7 @@ export class HomeComponent implements OnInit {
       icon: 'pi pi-exclamation-triangle',
       accept: () => {
         sessionStorage.removeItem('key');
+        this._service.updateLoginStatus(true);
         this._router.navigate(['login']);
 
       }

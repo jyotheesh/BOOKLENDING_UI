@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DataService } from '../data.service';
 
 @Component({
   selector: 'app-header',
@@ -6,13 +7,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  display: boolean = true;
-  constructor() { }
+  display: boolean;
+  constructor(private _service: DataService) { }
 
+
+  getLoginStatus = () => {
+    this._service.loginStatus.subscribe(data => {
+      this.display = data;
+    })
+  }
   ngOnInit() {
-    if (sessionStorage.getItem("key")) {
-      this.display = false;
-    }
+    // this._service.check();
+    this.getLoginStatus();
 
   }
 
