@@ -18,7 +18,9 @@ export class DataService {
    *postRegister method to save user data to backend
    */
   postRegister = (user) => {
-    return this._http.post("http://10.117.189.162:9090/book-lending-system/users/", user);
+
+    return this._http.post("http://13.233.128.233:9090/book-lending-system/users/", user);
+
   }
 
 
@@ -30,7 +32,9 @@ export class DataService {
       "email": email,
       "password": password
     }
-    return this._http.post("http://10.117.189.162:9090/book-lending-system/login", userObj)
+
+    return this._http.post("http://13.233.128.233:9090/book-lending-system/login", userObj)
+
   }
 
   /**
@@ -42,7 +46,9 @@ export class DataService {
       "authorName": authorName,
       "userId": userId
     }
-    return this._http.post("http://10.117.189.162:9090/book-lending-system/books/", book)
+
+    return this._http.post("http://13.233.128.233:9090/book-lending-system/books/", book)
+
   }
 
   /**
@@ -50,7 +56,9 @@ export class DataService {
    * @param: pageNo
    */
   getAllBooks = (pageNo: number) => {
-    return this._http.get<Array<object>>("http://10.117.189.162:9090/book-lending-system/books/?pageNumber=" + pageNo);
+
+    return this._http.get<Array<object>>("http://13.233.128.233:9090/book-lending-system/books/?pageNumber=" + pageNo);
+
   }
 
   /**
@@ -59,13 +67,13 @@ export class DataService {
    */
   getSearchResult = (title, author, pageNo) => {
     if (author != undefined && title != undefined) {
-      return this._http.get("http://10.117.189.162:9090/book-lending-system/books/?authorName=" + author + "&bookName=" + title + "&pageNumber=" + pageNo);
+      return this._http.get("http://13.233.128.233:9090/book-lending-system/books/?authorName=" + author + "&bookName=" + title + "&pageNumber=" + pageNo);
     }
     else if (author != undefined) {
-      return this._http.get("http://10.117.189.162:9090/book-lending-system/books/?authorName=" + author + "&pageNumber=" + pageNo);
+      return this._http.get("http://13.233.128.233:9090/book-lending-system/books/?authorName=" + author + "&pageNumber=" + pageNo);
     }
     else {
-      return this._http.get("http://10.117.189.162:9090/book-lending-system/books/?bookName=" + title + "&pageNumber=" + pageNo);
+      return this._http.get("http://13.233.128.233:9090/book-lending-system/books/?bookName=" + title + "&pageNumber=" + pageNo);
     }
 
   }
@@ -74,7 +82,7 @@ export class DataService {
     let obj = {
       "userId": userId
     }
-    return this._http.post("http://10.117.189.162:9090/book-lending-system/books/" + bookId + "/borrow", obj)
+    return this._http.post("http://13.233.128.233:9090/book-lending-system/books/" + bookId + "/borrow", obj)
 
   }
 
@@ -82,7 +90,7 @@ export class DataService {
     let obj = {
       "userId": userId
     }
-    return this._http.post("http://10.117.189.162:9090/book-lending-system/books/" + bookId + "/request", obj)
+    return this._http.post("http://13.233.128.233:9090/book-lending-system/books/" + bookId + "/request", obj)
   }
 
 
