@@ -4,15 +4,17 @@
         <p-card [style]="{width: '360px'}" styleClass="ui-card-shadow">
             <h3 style="color: orange">Login</h3>
             <div class="container mt-4">
+                <b>Email ID</b><br />
                 <input name="email" [(ngModel)]="email" type="text" size="30" pInputText placeholder="Email ID"
-                    required><br /><br />
+                    required>
+                <b>Password</b>
                 <input name="pass" [(ngModel)]="password" type="password" size="30" pInputText placeholder="Password">
 
             </div>
             <p-footer>
                 <button pButton type="button" label="Login" icon="pi pi-sign-in" style="margin-right: .25em"
                     (click)="logIn()"></button>
-                <button pButton type="reset" label="Clear" icon="pi pi-times" class="ui-button-warning"></button>
+
                 <div class="container mt-3 ">
                     <a routerLink="/register">New User? Register Here</a>
                 </div>

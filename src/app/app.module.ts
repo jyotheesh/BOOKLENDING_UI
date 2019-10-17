@@ -12,7 +12,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 
-/*Importing Third Party PrimeNg Components*/
+/**
+ * Importing Third Party PrimeNg Components
+ */
 import { ButtonModule } from 'primeng/button';
 import { CardModule } from 'primeng/card';
 import { InputTextModule } from 'primeng/inputtext';
@@ -20,6 +22,8 @@ import { HomeComponent } from './home/home.component';
 import { DialogModule } from 'primeng/dialog';
 import { TableModule } from 'primeng/table';
 import { ToastModule } from 'primeng/toast';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { ConfirmationService, MessageService } from 'primeng/api';
 
 
 @NgModule({
@@ -44,9 +48,10 @@ import { ToastModule } from 'primeng/toast';
     RouterModule,
     DialogModule,
     TableModule,
-    ToastModule
+    ToastModule,
+    ConfirmDialogModule
   ],
-  providers: [],
+  providers: [MessageService, ConfirmationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

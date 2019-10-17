@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { doesNotThrow } from 'assert';
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +18,7 @@ export class DataService {
    *postRegister method to save user data to backend
    */
   postRegister = (user) => {
-    return this._http.post("http://10.117.189.126:9090/book-lending-system/users/", user);
+    return this._http.post("http://10.117.189.162:9090/book-lending-system/users/", user);
   }
 
 
@@ -29,7 +30,7 @@ export class DataService {
       "email": email,
       "password": password
     }
-    return this._http.post("http://10.117.189.126:9090/book-lending-system/login", userObj)
+    return this._http.post("http://10.117.189.162:9090/book-lending-system/login", userObj)
   }
 
   /**
@@ -41,7 +42,7 @@ export class DataService {
       "authorName": authorName,
       "userId": userId
     }
-    return this._http.post("http://10.117.189.126:9090/book-lending-system/books", book)
+    return this._http.post("http://10.117.189.162:9090/book-lending-system/books/", book)
   }
 
   /**
@@ -49,15 +50,39 @@ export class DataService {
    * @param: pageNo
    */
   getAllBooks = (pageNo: number) => {
-    return this._http.get<Array<object>>("http://10.117.189.126:9090/book-lending-system/books/?pageNumber=" + pageNo);
+    return this._http.get<Array<object>>("http://10.117.189.162:9090/book-lending-system/books/?pageNumber=" + pageNo);
   }
 
   /**
    * Get the Search Result for search crite
    * @returns :Array
    */
-  getSearchDetails = () => {
-    return this._http.get("");
+  getSearchResult = (title, author, pageNo) => {
+    if (author != undefined && title != undefined) {
+      return this._http.get("http://10.117.189.162:9090/book-lending-system/books/?authorName=" + author + "&bookName=" + title + "&pageNumber=" + pageNo);
+    }
+    else if (author != undefined) {
+      return this._http.get("http://10.117.189.162:9090/book-lending-system/books/?authorName=" + author + "&pageNumber=" + pageNo);
+    }
+    else {
+      return this._http.get("http://10.117.189.162:9090/book-lending-system/books/?bookName=" + title + "&pageNumber=" + pageNo);
+    }
+
+  }
+
+  borrowBookFromApi = (bookId, userId) => {
+    let obj = {
+      "userId": userId
+    }
+    return this._http.post("http://10.117.189.162:9090/book-lending-system/books/" + bookId + "/borrow", obj)
+
+  }
+
+  requestBookFromApi = (bookId, userId) => {
+    let obj = {
+      "userId": userId
+    }
+    return this._http.post("http://10.117.189.162:9090/book-lending-system/books/" + bookId + "/request", obj)
   }
 
 

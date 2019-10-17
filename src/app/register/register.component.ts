@@ -42,10 +42,26 @@ export class RegisterComponent implements OnInit {
     localStorage.setItem(this.user.email, JSON.stringify(this.user));
     this._service.postRegister(this.user).subscribe((data) => {
       console.log(data);
+      if (data['statusCode'] == 200) {
+        this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Registered Successfully' });
+        setTimeout(() => {
+          this._router.navigate(['login'])
+        }, 2500)
+      }
+      else {
+        console.log("error");
+      }
     })
-    this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Registered Successfully' });
-    this._router.navigate(['login']);
   }
+
+  // clearUser = () => {
+  //   this.user.email = "";
+  //   this.user.name = "";
+  //   this.user.password = "";
+  //   this.user.phone = 0;
+  //   this.cpassword = "";
+
+  // }
 
   ngOnInit() {
 
