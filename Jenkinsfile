@@ -34,7 +34,7 @@ pipeline {
 
                 sh '''
 
-                cd /var/lib/jenkins/workspace/pipeline/dist
+                cd /var/lib/jenkins/workspace/BOOKLENDING_UI_PIPELINE/dist
 
                 chmod -R 777 BookLendSystem
 
