@@ -38,7 +38,7 @@ pipeline {
 
                 chmod -R 777 BookLendSystem
 
-                cp -rf BookLendSystem /opt/apache-tomcat-9.0.27/webapps/
+                cp -rf BookLendSystem /opt/apache-tomcat-9.0.26/webapps/
 
             '''
 
